@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Sales Analysis</title>
+</head>
+<body>
+    <h1>Food Sales Data</h1>
+    <div>
+        <label for="dateStart">Start Date:</label>
+        <input type="date" id="dateStart">
+        <label for="dateEnd">End Date:</label>
+        <input type="date" id="dateEnd">
+    </div>
+    <div>
+        <label for="city">City:</label>
+        <select id="city">
+            <option value="">Select City</option>
+        </select>
+        <label for="category">Category:</label>
+        <select id="category">
+            <option value="">Select Category</option>
+        </select>
+    </div>
+    <button onclick="loadData()">Filter Data</button>
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Region</th>
+                <th>City</th>
+                <th>Category</th>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Unit Price</th>
+                <th>Total Price</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>

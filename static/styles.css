@@ -1,0 +1,23 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    -webkit-text-size-adjust: 100% !important; /* For older browsers */
+    text-size-adjust: 100% !important; /* Universal property */
+}
+
+h1 {
+    color: #343a40;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    margin-top: 20px;
+}
+
+table th {
+    text-align: center;
+}
