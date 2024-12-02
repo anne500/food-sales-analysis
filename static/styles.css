@@ -1,12 +1,32 @@
 body {
+    background: url('/static/snack-food-ingredients_Lead.png') no-repeat center center fixed;
+    background-size: cover; /* Ensures the image covers the entire viewport */
+    /*font-family: Arial, sans-serif;*/ /* Keep existing styling */
     font-family: 'Arial', sans-serif;
     background-color: #f8f9fa;
     -webkit-text-size-adjust: 100% !important; /* For older browsers */
     text-size-adjust: 100% !important; /* Universal property */
 }
 
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8); /* Semi transparent white overlay */
+    /*background: rgba(0, 0, 0, 0.5); *//* Black overlay with 50% opacity */
+    z-index: -1; /* Keeps it behind all content */
+}
+
+h1, p, label {
+    color: white; /* Ensure text is readable over the background */
+} 
+
 h1 {
-    color: #343a40;
+    /* color: #343a40; */
+    color: #333; /* Darker text to match the overlay */
 }
 
 .card {
@@ -16,8 +36,17 @@ h1 {
 
 table {
     margin-top: 20px;
+    background: rgba(255, 255, 255, 0.9); /* Add white background behind the table */
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
 }
 
 table th {
     text-align: center;
+    background-color: #f4f4f4; /* Slightly darker header */
 }
