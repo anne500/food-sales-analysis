@@ -42,6 +42,7 @@ google-auth-oauthlib==1.2.0
 google-pasta==0.2.0
 gunicorn
 grpcio==1.62.0
+gunicorn
 h11==0.14.0
 h5py==3.10.0
 htmlmin==0.1.12
@@ -102,7 +103,7 @@ outcome==1.2.0
 overrides==7.6.0
 packaging==23.2
 pandas==2.2.3
-pandas-profiling==3.6.6
+pandas-profiling==3.2.0
 pandocfilters==1.5.1
 parso==0.8.3
 patsy==0.5.6
@@ -128,7 +129,6 @@ python-dateutil==2.8.2
 python-json-logger==2.0.7
 pytz==2023.3.post1
 PyWavelets==1.5.0
-pywin32==306
 pywinpty==2.0.12
 PyYAML==6.0.1
 pyzmq==25.1.2
