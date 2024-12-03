@@ -83,5 +83,6 @@ def filter_data():
         return jsonify({"error": f"Filtering error: {e}"}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Get the port from the environment
+    app.run(host="0.0.0.0", port=port, debug=True)  # Run Flask on the specified host and port
 
