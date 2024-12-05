@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add event listener for the Filter Data button
     const filterButton = document.getElementById('filterButton');
     filterButton.addEventListener('click', loadData);
+
+    // Add event listener for the Export to CSV button
+    const exportButton = document.getElementById('exportButton');
+    exportButton.addEventListener('click', exportToCSV);
 });
 
 function fetchCities() {
@@ -98,4 +102,40 @@ function loadData() {
         console.error('Error fetching data:', error);
         alert('Failed to fetch data. Please try again later.');
     });
+}
+
+// Export to CSV functionality
+/*function exportToCSV() {
+    const rows = Array.from(document.querySelectorAll('#dataTable tr'));
+    const csvContent = rows.map(row =>
+        Array.from(row.querySelectorAll('td, th')).map(cell => cell.textContent).join(',')
+    ).join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'table_data.csv';
+    link.click();
+}*/
+function exportToCSV() {
+    const exportButton = document.getElementById('exportButton');
+    exportButton.disabled = true; // Disable the button
+    exportButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Exporting...';
+
+    const rows = Array.from(document.querySelectorAll('#dataTable tr'));
+    const csvContent = rows.map(row =>
+        Array.from(row.querySelectorAll('td, th')).map(cell => cell.textContent).join(',')
+    ).join('\n');
+
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'table_data.csv';
+    link.click();
+
+    // Revert the button back to its original state
+    setTimeout(() => {
+        exportButton.disabled = false;
+        exportButton.innerHTML = '<i class="fas fa-download"></i> Download Table as CSV';
+    }, 2000); // Reset after 2 seconds
 }

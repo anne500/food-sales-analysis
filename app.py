@@ -4,12 +4,12 @@ Created on Sat Nov 30 21:55:51 2024
 
 @author: ishani
 """
-
 from flask import Flask, request, jsonify, render_template
 import pandas as pd
 from flask_cors import CORS
+import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 CORS(app)
 
 # Load the dataset
@@ -19,6 +19,44 @@ try:
 except Exception as e:
     print(f"Error loading dataset: {e}")
     df = pd.DataFrame()  # Create an empty DataFrame to handle errors gracefully
+
+#@app.route('/debug-static')
+#def debug_static():
+#    import os
+#    static_dir = os.path.join(app.root_path, 'static')
+#    files = os.listdir(static_dir)
+#    return f"Files in /static/: {files}"
+
+#@app.route('/debug-static-files')
+#def debug_static_files():
+#    import os
+#    static_dir = os.path.join(app.root_path, 'static')
+#    try:
+#        files = {subdir: os.listdir(os.path.join(static_dir, subdir)) for subdir in ['css', '']}
+#        return f"CSS files: {files.get('css', [])}<br>Static root files: {files.get('', [])}"
+#    except FileNotFoundError as e:
+#        return str(e), 404
+
+#@app.route('/debug-working-dir')
+#def debug_working_dir():
+#    import os
+#    return f"Working directory: {os.getcwd()}"
+
+#@app.route('/debug-files')
+#def debug_files():
+#    import os
+#    static_dir = os.path.join(app.root_path, 'static/')
+#    try:
+#        files = os.listdir(static_dir)
+#        return f"Files in static/: {files}"
+#    except FileNotFoundError as e:
+#        return str(e), 404
+
+#@app.route('/debug-static')
+#def debug_static():
+#    import os
+#    static_dir = os.path.join(app.root_path, 'static/')
+#    return str(os.listdir(static_dir))
 
 @app.after_request
 def add_security_headers(response):
@@ -83,6 +121,7 @@ def filter_data():
         return jsonify({"error": f"Filtering error: {e}"}), 500
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))  # Get the port from the environment
-    app.run(host="0.0.0.0", port=port, debug=True)  # Run Flask on the specified host and port
+   #app.run(debug=True)
+   port = int(os.environ.get("PORT", 5000))  # Get the port from the environment
+   app.run(host="0.0.0.0", port=port, debug=False)  # Run Flask on the specified host and port
 
