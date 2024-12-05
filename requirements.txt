@@ -12,6 +12,7 @@ et_xmlfile==2.0.0
 Flask==3.1.0
 Flask-Cors==5.0.0
 fonttools==4.55.1
+gunicorn
 htmlmin==0.1.12
 idna==3.10
 ImageHash==4.3.1
